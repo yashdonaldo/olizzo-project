@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single E-commerce Product Page using HTML, CSS - Codingscape</title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../css/pageview.css">
+    <!---Boxicons CDN Setup for icons-->
+    <link rel="stylesheet" href="../css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <%- include('../partial/navbar.ejs') %>
+
+    <div class="container">
+        <div class="single-product">
+            <div class="row">
+                <div class="col-6">
+                    <div class="product-image">
+                        <div class="product-image-main">
+                            <img src="../img/1001-S2/1.jpg" alt="" id="product-main-image">
+                        </div>
+                        <div class="product-image-slider">
+                            <img src="../img/1001-S2/6.jpg" alt="" class="image-list">
+                            <img src="../img/1001-S2/3.jpg" alt="" class="image-list">
+                            <img src="../img/1001-S2/4.jpg" alt="" class="image-list">
+                            <img src="../img/1001-S2/5.jpg" alt="" class="image-list">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    {{!-- <div class="breadcrumb">
+                        <span><a href="#">Home</a></span>
+                        <span><a href="#">Product</a></span>
+                        <span class="active">T-shirt</span>
+                    </div> --}}
+
+                    <div class="product">
+                        <div class="product-title">
+                            <h2>Summer Beach Wear Women Boho paisley foil printed Dress in French crepe and Silk Fabric
+                            </h2>
+                        </div>
+                        <div class="product-rating">
+                            <span><i class="bx bxs-star"></i></span>
+                            <span><i class="bx bxs-star"></i></span>
+                            <span><i class="bx bxs-star"></i></span>
+                            <span><i class="bx bxs-star"></i></span>
+                            <span><i class="bx bxs-star"></i></span>
+                            <span class="review">(47 Review)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="offer-price">$10000000.00</span>
+                            <span class="sale-price">$10.00</span>
+                        </div>
+
+                        <div class="product-details">
+                            <h3>Description</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos est magnam quibusdam
+                                maiores sit perferendis minima cupiditate iusto earum repudiandae maxime vitae nostrum,
+                                ea cumque iste ipsa hic commodi tempore.</p>
+                        </div>
+                        <div class="model">
+                            <h5>Model no. <span>: 1001-S2</span></h5>
+
+                        </div>
+                        <span class="divider"></span>
+
+                        <div class="product-btn-group">
+                            <div class="button buy-now"><i class='bx bxs-zap'></i>Whatsapp</div>
+                            <div class="button add-cart"> Send Enquiry</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="Other_Product">
+        <div class="tittle">
+            <h2>Our Other Products</h2>
+        </div>
+        <div id="product_container">
+            <div class="catagories">
+                <div id="p_section">
+                    <div class="card swiper-slide more_product">
+                        <a href="/product/1001-S2"><img src="../img/1001-S2/1.jpg" alt=""></a>
+                        <h4>Summer Beach Wear Women Boho paisley foil printed Dress in French crepe and Silk Fabric</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide more_product">
+                        <a href="/product/1001-S26"><img src="../img/1001-S26/1.jpg" alt=""></a>
+                        <h4>Summer Beach Wear Women Boho paisley foil printed Dress in French crepe and Silk Fabric</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide more_product">
+                        <a href="/product/1004-S7"><img src="../img/1004-S7/2.jpg" alt=""></a>
+                        <h4>Women Short Dress, foil printed silk fabric</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide more_product">
+                        <a href="/product/1004-SF1"><img src="../img/1004-SF1/1.jpg" alt=""></a>
+                        <h4>Women Short Dress, foil printed silk fabric</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide more_product">
+                        <a href="/product/1004-S15"><img src="../img/1004-S15/1.jpg" alt=""></a>
+                        <h4>Women Short Dress, foil printed silk fabric</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide more_product">
+                        <a href="/product/1004-S28"><img src="../img/1004-S28/1.jpg" alt=""></a>
+                        <h4>Girls Short Dresss</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide more_product">
+                        <a href="/product/1004-S23"><img src="../img/1004-S23/1.jpg" alt=""></a>
+                        <h4>Girls Short Viral Dress</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide more_product">
+                        <a href="/product/1005-S6"><img src="../img/1005-S6/1.jpg" alt=""></a>
+                        <h4>Tranding Short Dress</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide more_product">
+                        <a href="/product/1005-S5"><img src="../img/1005-S5/1.jpg" alt=""></a>
+                        <h4>Silk Girls Short Dress</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>.
+
+    <!--script-->
+    <script src="../js/script.js"></script>
+    <script src="https://kit.fontawesome.com/d8397c9ffc.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="../js/script3.js"></script>
+</body>
+
+</html>

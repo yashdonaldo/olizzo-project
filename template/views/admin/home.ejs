@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Dashboard</h1>
+
+    <table width="50%">
+        <tr>
+            <th>name</th>
+            <th>Price</th>
+            <th>Discription</th>
+            <th>Type</th>
+            <th>Image</th>
+        </tr>
+        <% 
+            if (users.length>0) {
+                for (let i = 0; i < users.length; i++) {
+                    %>
+                    <tr>
+                        <td><%= users[i].product_name %></td>
+                        <td><%= users[i].product_price %></td>
+                        <td><%= users[i].product_discription %></td>
+                        <td><%= users[i].catagories %></td>
+                        <td><img src="../img/photos/<%= users[i].product_img %>" alt="<%= users[i].product_img %>" srcset="" width="100px" height="100px"></td>
+                    </tr>
+                    <%                   
+                }
+            } else {
+                %>
+                <tr>
+                    <td colspan="5">Product Not Found</td>    
+                </tr>
+                <%
+            }
+        %>
+    </table>
+    <br><br>
+    <a href="/admin/logout">Logout</a>
+</body>
+</html>

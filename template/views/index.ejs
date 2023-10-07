@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- {{>link}} -->
+    <%- include('../partial/link') %>
+</head>
+
+<body>
+    <!-- {{>navbar}} -->
+    <%- include('../partial/navbar') %>
+
+    <!-- {{!-- Enquiry Button Start --}} -->
+    <div class="chat">
+        <h4><a href="/register">Send Enquiry</a></h4>
+    </div>
+    <div class="circle"></div>
+    <!-- {{!-- Enquiry Button End --}} -->
+
+
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+            <div class="numbertext">1 / 3</div>
+            <img src="./img/banner.jpg" style="width:100%">
+            <div class="text"></div>
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">2 / 3</div>
+            <img src="../img/yash.jpg" style="width:100%">
+            <div class="text"></div>
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">3 / 3</div>
+            <img src="../img/banner2.jpg" style="width:100%">
+            <div class="text"></div>
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+
+    <!-- {{!-- OFFER SECTION START --}} -->
+    <section id="offer">
+        <h4>We Offer</h4>
+        <p>Introducing our exclusive product offer! For a limited time, we're delighted to present you with an
+            unbeatable deal. Purchase any of our premium products and receive a second item of equal or lesser value at
+            a remarkable 50% discount. Whether you're looking to upgrade your wardrobe, enhance your tech collection, or
+            elevate your home decor, this offer has you covered. Explore our extensive range of high-quality products
+            and seize this opportunity to save big while enjoying the best in quality and style. Don't miss out on this
+            incredible offer "–" shop now and elevate your lifestyle with our exceptional products!</p>
+    </section>
+    <div class="img">
+        <div class="first">
+            <img src="./img/yash2.jpg" alt="" id="lt" srcset="">
+        </div>
+        <div class="second">
+            <img src="./img/yash5.jpg" alt="" srcset="">
+            <img src="../img/yash6.jpg" alt="" srcset="">
+            <img src="./img/yash7.jpg" alt="" srcset="">
+            <img src="../img/sml-bkd.jpg" alt="" srcset="">
+        </div>
+    </div>
+    <!-- {{!-- OFFER SECTION END --}} -->
+
+
+
+    <!-- {{!-- TRANDING SECTION START --}} -->
+    <div class="wrapper">
+        <div class="top_t">
+
+            <h2>Trending Items <span>Check out our best and trending products that you can find suitable for your next
+                    project.</span></h2>
+        </div>
+        <box-icon id="left" name='arrow-back' animation='burst' color='#000000'></box-icon>
+        <ul class="carousel">
+            <li class="card">
+                <div class="img">
+                    <a href="/product/1001-S2"><img src="./img/1001-S2/1.jpg" alt="" draggable='false' srcset=""></a>
+                </div>
+                <h2>New Long Dress</h2>
+                <a href="/product/1001-S2" id="tranding_btn">Click Here</a>
+            </li>
+            <li class="card">
+                <div class="img">
+                    <a href="/product/1004-S28"></a><img src="./img/1004-S28/1.jpg" alt="" draggable='false' srcset="">
+                </div>
+                <h2>Short Dress</h2>
+                <a href="/product/1004-S28" id="tranding_btn">Click Here</a>
+            </li>
+            <li class="card">
+                <div class="img">
+                    <a href="/product/1004-S23"></a><img src="./img/1004-S23/1.jpg" alt="" draggable='false' srcset="">
+                </div>
+                <h2>Knee Dress</h2>
+                <a href="/product/1004-S23" id="tranding_btn">Click Here</a>
+            </li>
+            <li class="card">
+                <div class="img">
+                    <a href="/product/1004-S15"></a><img src="./img/1004-S15/1.jpg" alt="" draggable='false' srcset="">
+                </div>
+                <h2>Tranding Short Summer dress</h2>
+                <a href="/product/1004-S15" id="tranding_btn">Click Here</a>
+            </li>
+            <li class="card">
+                <div class="img">
+                    <a href="/product/1004-S7"></a><img src="./img/1004-S7/1.jpg" alt="" draggable='false' srcset="">
+                </div>
+                <h2>Tranding Short Dress</h2>
+                <a href="/product/1004-S7" id="tranding_btn">Click Here</a>
+            </li>
+            <li class="card">
+                <div class="img">
+                    <a href="/product/1001-S26"></a><img src="./img/1001-S26/1.jpg" alt="" draggable='false' srcset="">
+                </div>
+                <h2>Tranding Long Dress</h2>
+                <a href="/product/1001-S26" id="tranding_btn">Click Here</a>
+            </li>
+        </ul>
+        <box-icon id="right" name='right-arrow-alt' animation='burst' color='#000000'></box-icon>
+    </div>
+    <!-- {{!-- Tranding Section End --}} -->
+
+
+    <!-- {{!-- Product Section Start --}} -->
+    <section id="product">
+        <h1>Our Products</h1>
+        <p>Introducing our innovative product, the "TechGizmo X1" - a game-changer in the world of technology. The
+            TechGizmo X1 is a sleek and powerful device designed to enhance your daily life. With its lightning-fast
+            processor, stunning high-resolution display, and cutting-edge features, it redefines what you can expect
+            from a gadget. Whether you're a professional on the go, a creative enthusiast, or a tech-savvy individual,
+            the TechGizmo X1 has something for everyone. Its seamless connectivity options, robust security features,
+            and long-lasting battery ensure you stay productive and entertained throughout the day. Elevate your digital
+            experience with the TechGizmo X1 where innovation meets style.</p>
+        <div id="product_container">
+            <div class="catagories">
+                <div id="p_section">
+                    <% x.forEach(y=> { %>
+                    <div class="card swiper-slide">
+                        <a href="/product/1001-S2"><img src="./img/<%= y.product_img %>" alt=""></a>
+                        <h4><%= y.product_name %></h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <% }) %>
+                    <div class="card swiper-slide">
+                        <a href="/product/1001-S26"><img src="./img/1001-S26/1.jpg" alt=""></a>
+                        <h4>Summer Beach Wear Women Boho paisley foil printed Dress in French crepe and Silk Fabric</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <a href="/product/1004-S7"><img src="./img/1004-S7/2.jpg" alt=""></a>
+                        <h4>Women Short Dress, foil printed silk fabric</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <a href="/product/1004-SF1"><img src="./img/1004-SF1/1.jpg" alt=""></a>
+                        <h4>Women Short Dress, foil printed silk fabric</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <a href="/product/1004-S15"><img src="./img/1004-S15/1.jpg" alt=""></a>
+                        <h4>Women Short Dress, foil printed silk fabric</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <a href="/product/1004-S28"><img src="./img/1004-S28/1.jpg" alt=""></a>
+                        <h4>Girls Short Dresss</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <a href="/product/1004-S23"><img src="./img/1004-S23/1.jpg" alt=""></a>
+                        <h4>Girls Short Viral Dress</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <a href="/product/1005-S6"><img src="./img/1005-S6/1.jpg" alt=""></a>
+                        <h4>Tranding Short Dress</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <a href="/product/1005-S5"><img src="./img/1005-S5/1.jpg" alt=""></a>
+                        <h4>Silk Girls Short Dress</h4>
+                        <div class="btn">
+                            <button type="submit">Whatsapp</button>
+                            <button type="submit">Send Enquiry</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- {{!-- Product Section End --}} -->
+
+
+    <!-- {{!-- Call To Action Button Start --}} -->
+    <div class="big_box">
+        <div class="call_to_action">
+            <div class="sm_box">
+                <box-icon type='solid' name='phone-call'></box-icon>
+                <div class="call_about">
+                    <h3>Call</h3>
+                    <p>For Technical support, you can reach us on Toll No.</p>
+                    <a href='tel:+91 9910221914'>+91 9910221914</a>
+                </div>
+            </div>
+            <div class="sm_box">
+                <box-icon name='envelope'></box-icon>
+                <div class="call_about">
+                    <h3>Email</h3>
+                    <p>For Any type of support, query, you can write email us on</p>
+                    <a href="mailto:olizzovib@gmail.com">oizzovib@gmail.com</a>
+                </div>
+            </div>
+            <div class="sm_box">
+                <box-icon id="ct" name='contact' type='solid'></box-icon>
+                <div class="call_about">
+                    <h3>Contact Us</h3>
+                    <p>Have queries, doubts or suggestions? Raise an entry by filling out the form, and we'll be more
+                        than happy to help.</p>
+                    <a href="/register">Click Here</a>
+                </div>
+            </div>
+            <div class="sm_box">
+                <box-icon name='whatsapp' type='logo'></box-icon>
+                <div class="call_about">
+                    <h3>whatsapp</h3>
+                    <p>Need Any help, chat with my team</p>
+                    <a href="https://api.whatsapp.com/send?phone=919910221914">Click Here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- {{!-- Call to Action Button End --}} -->
+
+
+    <!-- {{!-- Footer Start --}} -->
+    <!-- {{>footer}} -->
+    <%- include('../partial/footer') %>
+    <script src="../js/burger.js"></script>
+    <script src="../js/script2.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="https://kit.fontawesome.com/d8397c9ffc.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>
