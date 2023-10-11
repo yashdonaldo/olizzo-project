@@ -1,9 +1,6 @@
 const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema({
-    un_id : {
-        type: Number
-    },
     product_name: {
         type: String,
         require: true
@@ -16,13 +13,15 @@ const productSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    product_img:{
-        type: String,
-        require: true
+    product_img: {
     },
     catagories:{
         type:String,
         required: true
+    },
+    model: {
+        type: String,
+        require: true
     }
 })
 

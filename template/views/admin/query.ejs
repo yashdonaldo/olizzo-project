@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="../css/home.css">
+
+<body>
+    <%- include('../../partial/dashboardnav.ejs') %>
+    <h1 class="title">All Queries of Customer</h1>
+    <div class="table-container">
+        <table id="grid-table">
+            <thead>
+                <tr>
+                    <th>Point</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone no.</th>
+                    <th>Country</th>
+                    <th>Query</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% user.forEach(y => { %>
+                <tr>
+                    <td>•</td>
+                    <td><%= y.name %></td>
+                    <td><%= y.email %></td>
+                    <td><%= y.phone %></td>
+                    <td><%= y.country %></td>
+                    <td><%= y.message %></td>
+                    <td><%= y.date %></td>
+                </tr>
+                <%})%>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+            <%
+                for(let j = 1; j<= totalpages; j++){
+                    %>
+                    <a href="?page=<%= j %>" class="pagination" id="page_no"><%= j %></a>
+                    <%
+                }
+            %>
+            <div class="download">
+                <a href="/admin/export-product">Download as Excel</a>
+                <a href="/admin/export-pdf">Download as pdf</a>
+            </div>
+    </div>
+
+    <script>
+        // script.js
+        document.addEventListener("DOMContentLoaded", function () {
+            // Example: Add a click event listener to table rows
+            const rows = document.querySelectorAll("#grid-table tbody tr");
+
+            rows.forEach((row) => {
+                row.addEventListener("click", function () {
+                    alert("Row clicked! You can add more functionality here.");
+                });
+            });
+        });
+
+    </script>
+</body>

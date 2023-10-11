@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="../css/home.css">
+
+<body>
+    <h1 style="text-align: center;">Users Query</h1>
+    <div class="table-container">
+        <table id="grid-table">
+            <thead>
+                <tr>
+                    <th>Point</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone no.</th>
+                    <th>Country</th>
+                    <th>Query</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% user.forEach(y => { %>
+                <tr>
+                    <td>•</td>
+                    <td><%= y.name %></td>
+                    <td><%= y.email %></td>
+                    <td><%= y.phone %></td>
+                    <td><%= y.country %></td>
+                    <td><%= y.message %></td>
+                    <td><%= y.date %></td>
+                </tr>
+                <%})%>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // script.js
+        document.addEventListener("DOMContentLoaded", function () {
+            // Example: Add a click event listener to table rows
+            const rows = document.querySelectorAll("#grid-table tbody tr");
+
+            rows.forEach((row) => {
+                row.addEventListener("click", function () {
+                    alert("Row clicked! You can add more functionality here.");
+                });
+            });
+        });
+
+    </script>
+</body>

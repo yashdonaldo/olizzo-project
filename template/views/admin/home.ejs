@@ -1,44 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/home.css">
 </head>
-<body>
-    <h1>Dashboard</h1>
 
-    <table width="50%">
-        <tr>
-            <th>name</th>
-            <th>Price</th>
-            <th>Discription</th>
-            <th>Type</th>
-            <th>Image</th>
-        </tr>
-        <% 
-            if (users.length>0) {
-                for (let i = 0; i < users.length; i++) {
-                    %>
-                    <tr>
-                        <td><%= users[i].product_name %></td>
-                        <td><%= users[i].product_price %></td>
-                        <td><%= users[i].product_discription %></td>
-                        <td><%= users[i].catagories %></td>
-                        <td><img src="../img/photos/<%= users[i].product_img %>" alt="<%= users[i].product_img %>" srcset="" width="100px" height="100px"></td>
-                    </tr>
-                    <%                   
-                }
-            } else {
-                %>
-                <tr>
-                    <td colspan="5">Product Not Found</td>    
-                </tr>
-                <%
-            }
-        %>
-    </table>
-    <br><br>
-    <a href="/admin/logout">Logout</a>
+<body>
+    <%- include('../../partial/dashboardnav.ejs') %>
+
+        <h1 class="title">Dashboard</h1>
+        <% if(typeof message !=="undefined" ){ %>
+            <h3 style="color: red;">
+                <%= message %>
+            </h3>
+            <% } %>
+
+                <div class="table-container">
+                    <table id="grid-table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Discription</th>
+                            <th>Product-Type</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                        <% if (users.length>0) {
+                            for (let i = 0; i < users.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= users[i].product_name %>
+                                    </td>
+                                    <td>
+                                        $ <%= users[i].product_price %>
+                                    </td>
+                                    <td>
+                                        <%= users[i].product_discription %>
+                                    </td>
+                                    <td>
+                                        <%= users[i].catagories %>
+                                    </td>
+                                    <% if(users[i].product_img[0]){%>
+                                        <td><img src="../img/photos/<%=  users[i].product_img[0].filename %>" alt="<%= users[i].product_img[0].filename %>"
+                                                srcset="" width="100px" height="100px"></td>
+
+                                    <%}else{%>
+                                        <td>Image Not Found</td>
+                                    <%}  %>
+
+                                    <td>
+                                        <a href="/admin/edit-product?id=<%= users[i]._id %>">Edit</a>
+                                        <a href="/admin/delete-product?id=<%= users[i]._id %>">Delete</a>
+                                    </td>
+                                </tr>
+                                <% } } else { %>
+                                    <tr>
+                                        <td colspan="5">Product Not Found</td>
+                                    </tr>
+                                    <% } %>
+                    </table>
+                </div>
+                <% for(let j=1; j<=totalpages; j++){ %>
+                    <a href="?page=<%= j %>" class="pagination" id="page_no">
+                        <%= j %>
+                    </a>
+                    <% } %>
+
+
+                        <script>
+                            function addurl(key, value) {
+                                const searchpara = new URLSearchParams(window.location.search)
+                                searchpara.set(key, value)
+                                const newRelative = window.location.pathname + "?" + searchpara.toString()
+                                history.pushState(null, "", newRelative)
+                            }
+
+                            let para = document.querySelectorAll(".pagination");
+                            para.addEventListener("click", () => {
+                                if (req.query.search) {
+                                    para.toggle(j)
+                                }
+                            })
+                            let link = para.search.baseURI
+                            console.log(link)
+                        </script>
 </body>
+
 </html>

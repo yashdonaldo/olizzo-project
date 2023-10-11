@@ -15,7 +15,7 @@
     <div id="p_section">
         <% x.forEach(y => { %>
         <div class="card swiper-slide">
-            <img src="./img/photos/<%= y.product_img[0].filename %>" alt="">
+            <a href="/model/<%= y._id %>"><img src="./img/photos/<%= y.product_img[0].filename %>" alt=""></a>            
             <h4><%= y.product_name %></h4>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus, reiciendis.</p>
             <button type="submit">Whatsapp</button>

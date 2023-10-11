@@ -1,88 +1,188 @@
-const express = require('express')
-const path = require('path')
-const TopRouter = new express.Router();
-const multer = require('multer')
-// const loginuser = require('../models/login')
-
+const express = require('express');
+const toprouter = new express.Router();
 const ProductAdd = require('../models/productadd');
-const TopsCollection = require('../models/top')
 
-
-const store = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, "Public/img/photos")
-    },
-    filename: function(req, file, cb){
-        cb(null,file.fieldname +  Date.now() + '_' + path.extname( file.originalname))
-    }
-})
-
-const upload = multer({
-    storage: store
-})
-
-TopRouter.get('/dashboard', (req, res)=>{
-    ProductAdd.find({}).then((x)=>{
-        res.render("dashboard", {x})
-    })
-})
-
-TopRouter.get('/topA1-B2', (req, res)=>{
-    TopsCollection.find({}).then((x)=>{
+toprouter.get('/top', (req, res)=>{
+    var search = '';
+        if(req.query.search){
+            search = req.query.search;
+        }
+    ProductAdd.find({
+        catagories : "Top",
+        $or:[
+            {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
+            {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
+            {model: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_price: {$regex:".*"+search+ ".*", $options: "i"}},
+            
+        ]
+    
+    }).then((x)=>{
         res.render("top", {x})
-        console.log(x)
     })
 })
-TopRouter.get('/top', (req, res)=>{
-    res.render('topadd')
-})
-TopRouter.get('/topdashboard', (req, res)=>{
-    TopsCollection.find({}).then((x)=>{
-        res.render("topdashboard", {x})
+toprouter.get('/body', (req, res)=>{
+    var search = '';
+        if(req.query.search){
+            search = req.query.search;
+        }
+    ProductAdd.find({
+        catagories : "Body",
+        $or:[
+            {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
+            {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
+            {model: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_price: {$regex:".*"+search+ ".*", $options: "i"}},
+            
+        ]
+    
+    }).then((x)=>{
+        res.render("body", {x})
     })
 })
-TopRouter.get('/body', (req, res)=>{
-    res.render('body')
+toprouter.get('/short-dress', (req, res)=>{
+    var search = '';
+        if(req.query.search){
+            search = req.query.search;
+        }
+    ProductAdd.find({
+        catagories : "Short-Dress",
+        $or:[
+            {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
+            {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
+            {model: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_price: {$regex:".*"+search+ ".*", $options: "i"}},
+            
+        ]
+    
+    }).then((x)=>{
+        res.render("short-dress", {x})
+    })
 })
-TopRouter.get('/Short-Dress', (req, res)=>{
-    res.render('short-dress')
+toprouter.get('/long-dress', (req, res)=>{
+    var search = '';
+        if(req.query.search){
+            search = req.query.search;
+        }
+    ProductAdd.find({
+        catagories : "Long-Dress",
+        $or:[
+            {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
+            {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
+            {model: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_price: {$regex:".*"+search+ ".*", $options: "i"}},
+            
+        ]
+    
+    }).then((x)=>{
+        res.render("long-dress", {x})
+    })
 })
-TopRouter.get('/Long-Dress', (req, res)=>{
-    res.render('longdressadd')
+toprouter.get('/jump-suit', (req, res)=>{
+    var search = '';
+        if(req.query.search){
+            search = req.query.search;
+        }
+    ProductAdd.find({
+        catagories : "Jump-Suit",
+        $or:[
+            {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
+            {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
+            {model: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_price: {$regex:".*"+search+ ".*", $options: "i"}},
+            
+        ]
+    
+    }).then((x)=>{
+        res.render("jump-suit", {x})
+    })
 })
-TopRouter.get('/Jump-Suit', (req, res)=>{
-    res.render('jumpsuitadd')
+toprouter.get('/cord-set', (req, res)=>{
+    var search = '';
+        if(req.query.search){
+            search = req.query.search;
+        }
+    ProductAdd.find({
+        catagories : "Cord-Set",
+        $or:[
+            {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
+            {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
+            {model: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_price: {$regex:".*"+search+ ".*", $options: "i"}},
+            
+        ]
+    
+    }).then((x)=>{
+        res.render("cord-set", {x})
+    })
 })
-TopRouter.get('/Chord-Set', (req, res)=>{
-    res.render('cordsetadd')
+toprouter.get('/short-skirt', (req, res)=>{
+    var search = '';
+        if(req.query.search){
+            search = req.query.search;
+        }
+    ProductAdd.find({
+        catagories : "Short-Skirt",
+        $or:[
+            {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
+            {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
+            {model: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_price: {$regex:".*"+search+ ".*", $options: "i"}},
+            
+        ]
+    
+    }).then((x)=>{
+        res.render("short-skirt", {x})
+    })
 })
-TopRouter.get('/Short-Skirt', (req, res)=>{
-    res.render('short-skirt')
+toprouter.get('/long-skirt', (req, res)=>{
+    var search = '';
+        if(req.query.search){
+            search = req.query.search;
+        }
+    ProductAdd.find({
+        catagories : "Long-Skirt",
+        $or:[
+            {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
+            {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
+            {model: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_price: {$regex:".*"+search+ ".*", $options: "i"}},
+            
+        ]
+    
+    }).then((x)=>{
+        res.render("long-skirt", {x})
+    })
 })
-TopRouter.get('/Long-Skirt', (req, res)=>{
-    res.render('long-skirt')
-})
-TopRouter.get('/Paint-Palazzo', (req, res)=>{
-    res.render('paintpalazzo')
+toprouter.get('/paint-palazzo', (req, res)=>{
+    var search = '';
+        if(req.query.search){
+            search = req.query.search;
+        }
+    ProductAdd.find({
+        catagories : "Paint-Palazzo",
+        $or:[
+            {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
+            {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
+            {model: {$regex:".*"+search+ ".*", $options: "i"}},
+            {product_price: {$regex:".*"+search+ ".*", $options: "i"}},
+            
+        ]
+    
+    }).then((x)=>{
+        res.render("paintpalazzo", {x})
+    })
 })
 
-TopRouter.post('/topadd', upload.array("pimage",5), async (req, res) => {
-    try {
-        const Topdetail = await new TopsCollection({
-            product_name: req.body.pname,
-            product_img: req.files,
-            product_price: req.body.price,
-            product_discription: req.body.discription,
-            product_model : req.body.pmodel
-
-        })
-        const rt2 = await Topdetail.save();
-        console.log(Topdetail)
-        res.status(201).redirect('/top')
-    } catch (error) {
-        res.status(404).send(error)
-    }
-})
 
 
-module.exports = TopRouter;
+module.exports = toprouter;

@@ -3,25 +3,67 @@ const app = express()
 const router = new express.Router();
 const multer = require('multer')
 const loginuser = require('../models/login')
-
+const banner = require("../models/banner")
 const ProductAdd = require('../models/productadd');
+const contactuser = require('../models/contact')
 
 
 const store = multer.diskStorage({
-    destination: "Public/img/photos",
-    filename: (req, file, cb) => {
-        cb(null, file.originalname)
+    destination: function(req, file, cb){
+        if(file.mimetype === 'image/jpeg' 
+        || file.mimetype === 'image/png'){
+            cb(null,path.join(__dirname,'../public/image'));
+        }
+    },
+    filename:function(req,file,cb){
+        const name = Date.now()+'-'+file.originalname;
+        cb(null,name);
     }
-})
+});
+const fileFilter = (req,file,cb) => {
+    if (file.fieldname === "pimage") {
+        (file.mimetype === 'pimage/jpeg' 
+         || file.mimetype === 'pimage/png')
+        ? cb(null,true)
+        : cb(null,false);
+    }
+}
 
 const upload = multer({
-    storage: store
-})
-router.get('/', (req, res) => {
-    ProductAdd.find({}).then((x) => {
-        res.status(201).render('index', { x })
+    storage: store,
+    fileFilter : fileFilter
+}).fields([{ name: 'pimage', maxCount: 4 }]);
 
-    })
+
+router.get('/', async (req, res) => {
+    try {
+        var search = ''
+        if(req.query.search){
+            search = req.query.search;
+        }
+        const banData = await banner.find({})
+        const AllData = await ProductAdd.find({
+            $or:[
+                {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
+                {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
+                {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
+                {model: {$regex:".*"+search+ ".*", $options: "i"}},
+                {product_price: {$regex:".*"+search+ ".*", $options: "i"}},
+                
+            ]
+        
+        })
+        if(AllData){
+            res.status(200).render("index", {
+                x : AllData,
+                i : banData
+            })
+        }else{
+            res.render("index")
+        }
+    } catch (error) {
+        console.log(error.message)
+    }
 })
 router.get('/about', (req, res) => {
     res.render('about')
@@ -37,40 +79,6 @@ router.get('/manufacture', (req, res) => {
 })
 router.get('/register', (req, res) => {
     res.render('contact')
-})
-router.get('/product/1001-S2', (req, res) => {
-    res.render('model_1001_S2')
-})
-router.get('/product/1001-S26', (req, res) => {
-    res.render('1001-S26')
-})
-router.get('/product/1004-S7', (req, res) => {
-    res.render('1004-S7')
-})
-router.get('/product/1004-SF1', (req, res) => {
-    res.render('1004-SF1')
-})
-router.get('/product/1004-S15', (req, res) => {
-    res.render('1004-S15')
-})
-router.get('/product/1004-S28', (req, res) => {
-    res.render('1004-S28')
-})
-router.get('/product/1004-S23', (req, res) => {
-    res.render('1004-S23')
-})
-router.get('/product/1005-S6', (req, res) => {
-    res.render('1005-S6')
-})
-router.get('/product/1005-S5', (req, res) => {
-    res.render('1005-S5')
-})
-// router.get('/admin', (req, res) => {
-//     res.render('login')
-// })
-
-router.get('/addproduct9955', (req, res) => {
-    res.render('productadd')
 })
 
 router.post('/register', async (req, res) => {
@@ -93,56 +101,22 @@ router.post('/register', async (req, res) => {
         res.status(404).send(error)
     }
 })
-// router.post('/login/dashboard', async (req, res) => {
-//     try {
-//         const loginDetail = new loginuser({
-//             usersname: req.body.username,
-//             password: req.body.password,
-
-//         })
-//         const rt = await loginDetail.save();
-//         console.log(loginDetail)
-//         let username = loginDetail.usersname;
-//         let password = loginDetail.password
-//         console.log(loginDetail.usersname)
-//         console.log(loginDetail.password)
-//         if (username === "admin" && password === '12341234') {
-//             ProductAdd.find({}).then((x) => {
-//                 res.status(201).render('dashboard', { x })
-//             })
-//         } else {
-//             console.log("password not matching")
-//         }
-//     } catch (error) {
-//         res.status(404).send(error)
-//     }
-// })
-router.post('/productedit', upload.single('pimage'), async (req, res) => {
-    try {
-        let num = new Date().getSeconds()
-        const productdetail = new ProductAdd({
-            product_name: req.body.pname,
-            product_img: req.file.filename,
-            product_price: req.body.price,
-            catagories: req.body.select,
-            product_discription: req.body.discription,
-            un_id: num
-        })
-        const rt2 = await productdetail.save();
-        console.log(productdetail)
-        req.flash("success", "Your Data Added Sucessfully")
-        res.status(201).redirect('/topdashboard')
-    } catch (error) {
-        res.status(404).send(error)
-    }
-})
 
 router.get('/edit/:id', (req, res) => {
     ProductAdd.findOne({ product_name : req.params.id }).then((x) => {
         res.render('productedit', { x })
     })
 })
-router.put('/edit/:id', upload.single('pimage'), (req, res) => {
+router.get('/model/:id', async (req, res)=>{
+    const ModelData =  await ProductAdd.findOne({_id : req.params.id});
+    if(ModelData){
+        res.render("model", {x : ModelData})
+    }else if(error){
+        res.render("index", {message : "Something Went Wrong"})
+    }
+})
+
+router.put('/edit/:id', upload, (req, res) => {
     if (req.file) {
         ProductAdd.updateOne({ product_name : req.params.id },
             {

@@ -1,5 +1,18 @@
 const express = require('express');
 const admin_route = express();
+const path = require('path')
+const multer = require('multer')
+const store = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, "Public/img/photos")
+    },
+    filename: function(req, file, cb){
+        cb(null,file.fieldname +  Date.now() + '_' + path.extname( file.originalname))
+    }
+})
+const upload = multer({
+    storage: store
+})
 
 const session = require('express-session');
 admin_route.use(session({
@@ -22,8 +35,27 @@ const adminController = require('../constrollers/adminController')
 admin_route.get("/", auth.isLogout ,adminController.loadlogin);
 admin_route.post("/", adminController.verifyLogin)
 
-admin_route.get("/home",auth.isLogin ,adminController.loadDashboard)
+admin_route.get("/home", auth.isLogin ,adminController.loadDashboard)
 admin_route.get("/logout", auth.isLogin ,adminController.logout);
+
+admin_route.get("/new-product", auth.isLogin, adminController.newProduct);
+admin_route.post("/new-product",upload.array("pimage",8), adminController.addProduct);
+
+admin_route.get("/edit-product", auth.isLogin, adminController.editProduct)
+admin_route.post("/edit-product",upload.array("pimage",8), adminController.updateProduct)
+
+admin_route.get("/delete-product", auth.isLogin, adminController.deleteProduct);
+
+admin_route.get("/query", auth.isLogin ,adminController.query)
+
+admin_route.get("/export-product", auth.isLogin, adminController.exportData)
+admin_route.get("/export-pdf", auth.isLogin, adminController.exportpdf)
+
+admin_route.get("/banner", auth.isLogin, adminController.banner)
+admin_route.get("/upload-banner", auth.isLogin, adminController.uploadbanner)
+admin_route.post("/upload-banner",upload.single("image"), adminController.bannerAdd)
+admin_route.get("/banner-delete", auth.isLogin, adminController.bannerdelete)
+
 
 admin_route.get("*", function(req, res){
     res.redirect("/admin")

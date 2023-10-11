@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blue;
+    color: white;
+    font-weight: 600;
+    width: 100%;
+    padding: 10px;
+}
+.logo a{
+    text-decoration: none;
+    color: white;
+    margin-left: 30px;
+    font-size: 24px;
+}
+.search{
+    width: 37%;
+}
+.search input{
+    width: 100%;
+    padding: 6px;
+    border: none;
+    border-radius: 5px;
+}
+.navbar ul{
+    display: flex;
+}
+.navbar ul li{
+    margin: 8px;
+    list-style: none;
+    position: relative;
+}
+.navbar li a {
+    text-decoration: none;
+    color: navajowhite;
+    font-size: 16px;
+}
+
+.navbar li a:hover{
+    color: red;
+}
+.navbar ul ul{
+    position: absolute;
+    top: 36px;
+    background: #1557ea;
+    left: 0;
+    opacity: 0;
+    visibility: visible;
+    transition: 1s all ease;
+    width: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.navbar ul ul .limenu{
+    display: inline;
+    font-size: 19px;
+}
+.navbar ul li:hover > ul{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.title{
+    text-align: center;
+    margin-top: 20px;
+}
+.table-container {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+
+#grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#grid-table th,
+#grid-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    width: 30px;
+}
+#grid-table td a{
+    text-decoration: none;
+    background-color: green;
+    padding: 4px 15px;
+    border-radius: 8px;
+    color: white;
+    margin-right: 10px;
+}
+
+#grid-table th {
+    background-color: #f2f2f2;
+}
+
+#grid-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+#page_no{
+    position: relative;
+    text-align: center;
+    border: none;
+    padding: 3px 9px;
+    background: blue;
+    color: white;
+    left: 50%;
+    top: 25px;
+    text-decoration: none;
+}    
+
+
+/* Query page  */
+.download a{
+    position: relative;
+    left: 3px;
+    border: none;
+    text-decoration: none;
+    background: green;
+    color: white;
+    padding: 5px 9px;
+    border-radius: 9px;
+    float: right;
+    margin-left: 4px;
+}
+.banner{
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.banner img{
+    width: 1021px;
+    height: 300px;
+}
+
+.banner .btn{
+    width: 72%;
+    background: red;
+    color: black;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 20px;
+    margin-top: 9px;
+    border-radius: 3px;
+    padding: 4px;
+}

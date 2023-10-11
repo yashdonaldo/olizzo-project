@@ -23,17 +23,17 @@
 
         <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
-            <img src="./img/banner.jpg" style="width:100%">
-            <div class="text"></div>
-        </div>
-
-        <div class="mySlides fade">
             <div class="numbertext">2 / 3</div>
-            <img src="../img/yash.jpg" style="width:100%">
+            <img src="../img/banner.jpg" style="width:100%">
             <div class="text"></div>
         </div>
-
+            <% i.forEach(y => { %>
+             <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="../img/photos/<%= y.image%>" style="width:100%">
+                <div class="text"></div>
+            </div>
+            <% }) %>
         <div class="mySlides fade">
             <div class="numbertext">3 / 3</div>
             <img src="../img/banner2.jpg" style="width:100%">
@@ -88,48 +88,15 @@
         </div>
         <box-icon id="left" name='arrow-back' animation='burst' color='#000000'></box-icon>
         <ul class="carousel">
-            <li class="card">
-                <div class="img">
-                    <a href="/product/1001-S2"><img src="./img/1001-S2/1.jpg" alt="" draggable='false' srcset=""></a>
-                </div>
-                <h2>New Long Dress</h2>
-                <a href="/product/1001-S2" id="tranding_btn">Click Here</a>
-            </li>
-            <li class="card">
-                <div class="img">
-                    <a href="/product/1004-S28"></a><img src="./img/1004-S28/1.jpg" alt="" draggable='false' srcset="">
-                </div>
-                <h2>Short Dress</h2>
-                <a href="/product/1004-S28" id="tranding_btn">Click Here</a>
-            </li>
-            <li class="card">
-                <div class="img">
-                    <a href="/product/1004-S23"></a><img src="./img/1004-S23/1.jpg" alt="" draggable='false' srcset="">
-                </div>
-                <h2>Knee Dress</h2>
-                <a href="/product/1004-S23" id="tranding_btn">Click Here</a>
-            </li>
-            <li class="card">
-                <div class="img">
-                    <a href="/product/1004-S15"></a><img src="./img/1004-S15/1.jpg" alt="" draggable='false' srcset="">
-                </div>
-                <h2>Tranding Short Summer dress</h2>
-                <a href="/product/1004-S15" id="tranding_btn">Click Here</a>
-            </li>
-            <li class="card">
-                <div class="img">
-                    <a href="/product/1004-S7"></a><img src="./img/1004-S7/1.jpg" alt="" draggable='false' srcset="">
-                </div>
-                <h2>Tranding Short Dress</h2>
-                <a href="/product/1004-S7" id="tranding_btn">Click Here</a>
-            </li>
-            <li class="card">
-                <div class="img">
-                    <a href="/product/1001-S26"></a><img src="./img/1001-S26/1.jpg" alt="" draggable='false' srcset="">
-                </div>
-                <h2>Tranding Long Dress</h2>
-                <a href="/product/1001-S26" id="tranding_btn">Click Here</a>
-            </li>
+                <% x.forEach(y => { %>               
+                <li class="card">
+                    <div class="img">
+                        <a href="/model/<%= y.id %>"><img src="./img/photos/<%= y.product_img[0].filename %>" alt="" draggable='false' srcset=""></a>
+                    </div>
+                    <h2>New Long Dress</h2>
+                    <a href="/product/1001-S2" id="tranding_btn">Click Here</a>
+                </li>
+                <% }) %>
         </ul>
         <box-icon id="right" name='right-arrow-alt' animation='burst' color='#000000'></box-icon>
     </div>
@@ -151,7 +118,7 @@
                 <div id="p_section">
                     <% x.forEach(y=> { %>
                     <div class="card swiper-slide">
-                        <a href="/product/1001-S2"><img src="./img/<%= y.product_img %>" alt=""></a>
+                        <a href="/model/<%= y._id %>"><img src="./img/photos/<%= y.product_img[0].filename %>" alt=""></a>
                         <h4><%= y.product_name %></h4>
                         <div class="btn">
                             <button type="submit">Whatsapp</button>
@@ -159,70 +126,6 @@
                         </div>
                     </div>
                     <% }) %>
-                    <div class="card swiper-slide">
-                        <a href="/product/1001-S26"><img src="./img/1001-S26/1.jpg" alt=""></a>
-                        <h4>Summer Beach Wear Women Boho paisley foil printed Dress in French crepe and Silk Fabric</h4>
-                        <div class="btn">
-                            <button type="submit">Whatsapp</button>
-                            <button type="submit">Send Enquiry</button>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <a href="/product/1004-S7"><img src="./img/1004-S7/2.jpg" alt=""></a>
-                        <h4>Women Short Dress, foil printed silk fabric</h4>
-                        <div class="btn">
-                            <button type="submit">Whatsapp</button>
-                            <button type="submit">Send Enquiry</button>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <a href="/product/1004-SF1"><img src="./img/1004-SF1/1.jpg" alt=""></a>
-                        <h4>Women Short Dress, foil printed silk fabric</h4>
-                        <div class="btn">
-                            <button type="submit">Whatsapp</button>
-                            <button type="submit">Send Enquiry</button>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <a href="/product/1004-S15"><img src="./img/1004-S15/1.jpg" alt=""></a>
-                        <h4>Women Short Dress, foil printed silk fabric</h4>
-                        <div class="btn">
-                            <button type="submit">Whatsapp</button>
-                            <button type="submit">Send Enquiry</button>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <a href="/product/1004-S28"><img src="./img/1004-S28/1.jpg" alt=""></a>
-                        <h4>Girls Short Dresss</h4>
-                        <div class="btn">
-                            <button type="submit">Whatsapp</button>
-                            <button type="submit">Send Enquiry</button>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <a href="/product/1004-S23"><img src="./img/1004-S23/1.jpg" alt=""></a>
-                        <h4>Girls Short Viral Dress</h4>
-                        <div class="btn">
-                            <button type="submit">Whatsapp</button>
-                            <button type="submit">Send Enquiry</button>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <a href="/product/1005-S6"><img src="./img/1005-S6/1.jpg" alt=""></a>
-                        <h4>Tranding Short Dress</h4>
-                        <div class="btn">
-                            <button type="submit">Whatsapp</button>
-                            <button type="submit">Send Enquiry</button>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <a href="/product/1005-S5"><img src="./img/1005-S5/1.jpg" alt=""></a>
-                        <h4>Silk Girls Short Dress</h4>
-                        <div class="btn">
-                            <button type="submit">Whatsapp</button>
-                            <button type="submit">Send Enquiry</button>
-                        </div>
-                    </div>
                 </div>
             </div>
     </section>

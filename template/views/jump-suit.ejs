@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partial/link.ejs') %>
+</head>
+
+<body>
+    <%- include('../partial/navbar.ejs') %>
+
+    <div class="heading">
+        <h1> Jump Suit </h1>
+    </div>
+     
+    <div id="p_section">
+        <% x.forEach(y => { %>
+        <div class="card swiper-slide">
+            <a href="/model/<%= y._id %>"><img src="./img/photos/<%= y.product_img[0].filename %>" alt=""></a>            
+            <h4><%= y.product_name %></h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus, reiciendis.</p>
+            <button type="submit">Whatsapp</button>
+        </div>
+        <% }) %>
+    </div>
+    <script src="../js/script.js"></script>
+    <script src="https://kit.fontawesome.com/d8397c9ffc.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+
+</html>
