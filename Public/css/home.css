@@ -51,7 +51,7 @@ nav{
     background: #1557ea;
     left: 0;
     opacity: 0;
-    visibility: visible;
+    visibility: hidden;
     transition: 1s all ease;
     width: 110px;
     display: flex;

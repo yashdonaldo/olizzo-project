@@ -65,15 +65,39 @@
             incredible offer "–" shop now and elevate your lifestyle with our exceptional products!</p>
     </section>
     <div class="img">
-        <div class="first">
-            <img src="./img/yash2.jpg" alt="" id="lt" srcset="">
-        </div>
-        <div class="second">
-            <img src="./img/yash5.jpg" alt="" srcset="">
-            <img src="../img/yash6.jpg" alt="" srcset="">
-            <img src="./img/yash7.jpg" alt="" srcset="">
-            <img src="../img/sml-bkd.jpg" alt="" srcset="">
-        </div>
+
+            <div class="first">
+                <% if (j[0]) { %> 
+                    <img src="./img/photos/<%= j[0].image_1 %>" alt="" id="lt">
+                <% }else { %>
+                    <img src="./img/photos/"  alt="Image Not Found" id="lt">
+                <% } %>
+            </div>
+            <div class="second">
+                <% if (j[1]) { %> 
+                    <img src="./img/photos/<%= j[1].image_1 %>" alt="" id="lt">
+                <% }else { %>
+                    <img src="./img/photos/"  alt="Image Not Found" id="lt">
+                <% } %>
+
+                <% if (j[2]) { %> 
+                    <img src="./img/photos/<%= j[2].image_1 %>" alt="" id="lt">
+                <% }else { %>
+                    <img src="./img/photos/"  alt="Image Not Found" id="lt">
+                <% } %>
+
+                <% if (j[3]) { %> 
+                    <img src="./img/photos/<%= j[3].image_1 %>" alt="" id="lt">
+                <% }else { %>
+                    <img src="./img/photos/"  alt="Image Not Found" id="lt">
+                <% } %>
+
+                <% if (j[4]) { %> 
+                    <img src="./img/photos/<%= j[4].image_1 %>" alt="" id="lt">
+                <% }else { %>
+                    <img src="./img/photos/"  alt="Image Not Found" id="lt" >
+                <% } %>
+            </div>
     </div>
     <!-- {{!-- OFFER SECTION END --}} -->
 
@@ -148,7 +172,7 @@
                 <div class="call_about">
                     <h3>Email</h3>
                     <p>For Any type of support, query, you can write email us on</p>
-                    <a href="mailto:olizzovib@gmail.com">oizzovib@gmail.com</a>
+                    <a href="mailto:olizzovib@gmail.com">olizzovib@gmail.com</a>
                 </div>
             </div>
             <div class="sm_box">

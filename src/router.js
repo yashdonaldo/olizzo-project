@@ -6,6 +6,8 @@ const loginuser = require('../models/login')
 const banner = require("../models/banner")
 const ProductAdd = require('../models/productadd');
 const contactuser = require('../models/contact')
+const companyinfo = require("../models/conpanyinfo")
+const offerdata = require("../models/offer")
 
 
 const store = multer.diskStorage({
@@ -41,6 +43,7 @@ router.get('/', async (req, res) => {
         if(req.query.search){
             search = req.query.search;
         }
+        const offdata = await offerdata.find({})
         const banData = await banner.find({})
         const AllData = await ProductAdd.find({
             $or:[
@@ -56,7 +59,8 @@ router.get('/', async (req, res) => {
         if(AllData){
             res.status(200).render("index", {
                 x : AllData,
-                i : banData
+                i : banData,
+                j : offdata
             })
         }else{
             res.render("index")
@@ -66,16 +70,22 @@ router.get('/', async (req, res) => {
     }
 })
 router.get('/about', (req, res) => {
-    res.render('about')
+    companyinfo.find({company_page : "Company Profile"}).then((x)=>{
+        res.render('about', {x})
+    })
 })
 router.get('/product', (req, res) => {
     res.render('product')
 })
 router.get('/order', (req, res) => {
-    res.render('process')
+    companyinfo.find({company_page : "Sample Process"}).then((x)=>{
+        res.render('process', {x})
+    })
 })
 router.get('/manufacture', (req, res) => {
-    res.render('manufaturing')
+    companyinfo.find({company_page : "Order Process"}).then((x)=>{
+        res.render('manufaturing', {x})
+    })
 })
 router.get('/register', (req, res) => {
     res.render('contact')

@@ -1,0 +1,109 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Editing Page</title>
+    <style>
+        /* CSS styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 6px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 9px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form p{
+            height: 60%;
+        }
+
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <% if (typeof message !=="undefined" ) { %>
+        <p style="color: red;">
+            <%= message %>
+        </p>
+        <% } %>
+            <form action="" method="post" class="container" enctype="multipart/form-data">
+                <h1>Update Company Info</h1>
+                <div class="form-group">
+                    <label for="selectInput">Where You Want to Write <span style="color: red;">*</span></label>
+                    <select id="selectInput" name="page">
+                        <option value="Select an Option">Select an Option</option>
+                        <option value="Company Profile">Company Profile</option>
+                        <option value="Sample Process">Sample Process</option>
+                        <option value="Order Process">Order Process</option>
+                    </select>
+                </div>
+                <div class="form-group" >
+                    <label for="productName">Company Info <span style="color: red;">*</span></label>
+                    <textarea id="editor" name="dicription" rows="10" cols="15" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="productName">Product Image <span style="color: red;">*</span></label>
+                    <input type="file" id="productName" name="pimage" multiple >
+                </div>
+                <div class="form-group">
+                    <button id="saveButton" type="submit">Update</button>
+                </div>
+            </form>
+
+
+            <!-- <script src="../../ckeditor5-build-classic/ckeditor.js"></script> -->
+            <script src="../../ckeditor/ckeditor.js"></script>
+            <!-- <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script> -->
+
+            <script>
+                CKEDITOR.replace("editor")
+            </script>
+            <!-- <script>
+                ClassicEditor
+                    .create( document.querySelector( '#editor' ) )
+                    .catch( error => {
+                        console.error( error );
+                    } );
+            </script> -->
+            
+</body>
+
+</html>

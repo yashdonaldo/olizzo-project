@@ -57,6 +57,15 @@ admin_route.post("/upload-banner",upload.single("image"), adminController.banner
 admin_route.get("/banner-delete", auth.isLogin, adminController.bannerdelete)
 
 
+admin_route.get("/company-info", adminController.companyinfo)
+admin_route.post("/company-info",upload.array("pimage"), adminController.companyupload)
+
+admin_route.get("/offer", adminController.offer);
+admin_route.get("/offer-update", adminController.offerupdate);
+admin_route.post("/offer-update", upload.single("image"), adminController.offeradd);
+admin_route.get("/offer-delete", adminController.offerdelete)
+
+
 admin_route.get("*", function(req, res){
     res.redirect("/admin")
 })

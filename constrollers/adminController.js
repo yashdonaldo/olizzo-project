@@ -4,6 +4,8 @@ const Details = require("../models/contact")
 const bcrypt = require('bcrypt')
 const ExcelJs = require('exceljs')
 const bannerdata = require("../models/banner");
+const comapnydata = require("../models/conpanyinfo")
+const offerdata = require("../models/offer")
 
 
 // html to pdf generate require things
@@ -346,9 +348,89 @@ const bannerdelete = async(req, res)=>{
     res.redirect("/admin/banner")
 }
 
+const companyinfo = async(req, res)=>{
+    try {
+        res.render("companyPara")
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+const companyupload = async(req, res)=>{
+    try {
+        const coInfo = req.body.dicription;
+        const image = req.files;
+        const com_type = req.body.page;
+        console.log(coInfo)
+
+        const datac = new comapnydata ({
+        Company_info : coInfo,
+        image : image,
+        company_page : com_type
+    });
+
+    const cdata = await datac.save();
+    console.log(cdata)
+    if(cdata){
+        res.redirect("/admin/company-info")
+    }else{
+        res.render('companyPara', {message: "Data not save"})
+    }
+
+
+    } catch (error) {
+        console.log(error.message)
+    }
+
+}
+
+const offer = async(req, res)=>{
+    try {
+        let off = await offerdata.find({ })
+        if(off){
+            res.render("offer", { x : off})
+        }else{
+            res.render("offer", {message : "Banner Not Found"})
+        }
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+const offerupdate = async(req, res)=>{
+    try {
+        res.render("offerupload")
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+const offeradd = async(req, res)=>{
+    try {
+        const image = req.file.filename;
+        const offfer = new offerdata({
+            image_1 : image
+        });
+        const offdata = await offfer.save()
+        if(offdata){
+            res.redirect("/admin/offer")
+        }else{
+            res.render("offerupload", {message: "Banner not Added"})
+        }
+    } catch (error) {
+        console.log(error.message)
+    }   
+}
+const offerdelete = async(req, res)=>{
+    const id = req.query.id
+    console.log(id)
+    const deleteBanner = await offerdata.deleteOne({_id : id})
+    res.redirect("/admin/offer")
+}
+
+
+
 
 
 module.exports = {
     loadlogin, verifyLogin, loadDashboard, logout, newProduct, addProduct, editProduct, updateProduct, deleteProduct,
-    query, exportData, exportpdf, banner, bannerAdd, bannerdelete, uploadbanner
+    query, exportData, exportpdf, banner, bannerAdd, bannerdelete, uploadbanner, companyinfo, companyupload, offer,
+    offerupdate, offeradd, offerdelete
 }

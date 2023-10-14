@@ -1,0 +1,23 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+    <%- include('../../partial/dashboardnav') %>
+        <% if(typeof message !=="undefined" ){ %>
+            <h3 style="color:green;">
+                <%= message %>
+            </h3>
+            <% } %>
+
+    <h1 class="title">Offer</h1>
+    <% x.forEach(y => { %>    
+        <div class="banner">
+            <img src="../img/photos/<%= y.image_1 %>" alt="" srcset="">
+            <a href="/admin/offer-delete?id=<%= y._id %>" class="btn">Delete</a>
+        </div>
+    <% }) %>
+</body>
+</html>

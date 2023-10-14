@@ -123,6 +123,20 @@
                 Number of Operators: 80
                 QC/QA Number: 10</p>
         </div>
+        <% x.forEach(y=> { %>
+            <% if (y.Company_info && y.image) { %>
+                <div class="co-info">
+                    <p><%- y.Company_info -%></p>
+                    <% y.image.forEach(img => { %>                       
+                        <img src="../img/photos/<%= img.filename %>" alt="" width="300px" height="300px">
+                    <% }) %>
+                </div>
+            <% }else{%>
+                    <div class="co-info">
+                        <p><%- y.Company_info -%></p>
+                    </div>
+            <%}%>
+        <% }) %>
     </div>
     <%- include('../partial/footer.ejs') %>
     <script src="../js/script.js"></script>
