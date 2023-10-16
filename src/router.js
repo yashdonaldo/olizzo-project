@@ -8,6 +8,7 @@ const ProductAdd = require('../models/productadd');
 const contactuser = require('../models/contact')
 const companyinfo = require("../models/conpanyinfo")
 const offerdata = require("../models/offer")
+const Alllink = require("../models/link")
 
 
 const store = multer.diskStorage({
@@ -43,6 +44,7 @@ router.get('/', async (req, res) => {
         if(req.query.search){
             search = req.query.search;
         }
+        const link = await Alllink.find({})
         const offdata = await offerdata.find({})
         const banData = await banner.find({})
         const AllData = await ProductAdd.find({
@@ -60,7 +62,8 @@ router.get('/', async (req, res) => {
             res.status(200).render("index", {
                 x : AllData,
                 i : banData,
-                j : offdata
+                j : offdata,
+                l : link
             })
         }else{
             res.render("index")

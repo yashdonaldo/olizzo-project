@@ -603,17 +603,12 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom-left-radius: 35px;
-    border-top-right-radius: 40px;
-    width: 21%;
-    height: 65vh;
+    width: 19%;
 }
 
 .swiper-slide img {
-    height: 40vh;
     margin: auto;
     object-fit: contain;
-    width: 100%;
 }
 
 .swiper {
@@ -638,12 +633,6 @@ button:hover {
     margin: 0 10px;
     font-size: 13px;
 }
-
-/* .swiper-slide img {
-    width: 50%;
-    height: 50%;
-    margin: auto;
-} */
 
 /* Footer Css  */
 

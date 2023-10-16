@@ -1,0 +1,97 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Editing Page</title>
+    <style>
+        /* CSS styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 6px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 9px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <% 
+        if (typeof message !== "undefined") {
+            %>
+             <p style="color: red;"><%= message %> </p>
+            <%
+        }    
+    %>
+    <form action="" method="post" class="container" >
+        <h1>Update Link</h1>
+        <div class="form-group">
+            <label for="productPrice">Whatsapp Link <span style="color: red;">*</span></label>
+            <input type="text" id="productPrice" name="whatsapp">
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Instagram Link <span style="color: red;">*</span></label>
+            <input type="text" id="productPrice" name="instagram">
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Facebook Link <span style="color: red;">*</span></label>
+            <input type="text" id="productPrice" name="facebook">
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Youtube Link <span style="color: red;">*</span></label>
+            <input type="text" id="productPrice" name="youtube">
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Email <span style="color: red;">*</span></label>
+            <input type="text" id="productPrice" name="email">
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Phone Number <span style="color: red;">*</span></label>
+            <input type="text" id="productPrice" name="phone">
+        </div>
+        
+        <div class="form-group">
+            <button id="saveButton" type="submit">Update</button>
+        </div>
+    </form>
+
+</body>

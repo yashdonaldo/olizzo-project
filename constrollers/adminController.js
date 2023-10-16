@@ -6,6 +6,7 @@ const ExcelJs = require('exceljs')
 const bannerdata = require("../models/banner");
 const comapnydata = require("../models/conpanyinfo")
 const offerdata = require("../models/offer")
+const Alllink = require("../models/link")
 
 
 // html to pdf generate require things
@@ -49,42 +50,42 @@ const loadDashboard = async (req, res) => {
     try {
 
         var search = '';
-        if(req.query.search){
+        if (req.query.search) {
             search = req.query.search;
         }
 
         var page = 1;
-        if(req.query.page){
+        if (req.query.page) {
             page = req.query.page;
         }
 
         const limit = 3
 
-        const data = await ProductData.find({ 
-            $or:[
-                {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
-                {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
-                {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
-                
-            ]
-         })
-         .limit(limit * 1)
-         .skip((page - 1) * limit)
-         .exec();
+        const data = await ProductData.find({
+            $or: [
+                { product_name: { $regex: ".*" + search + ".*", $options: "i" } },
+                { product_discription: { $regex: ".*" + search + ".*", $options: "i" } },
+                { catagories: { $regex: ".*" + search + ".*", $options: "i" } },
 
-        const count = await ProductData.find({ 
-            $or:[
-                {product_name: {$regex:".*"+search+ ".*", $options: "i"}},
-                {product_discription: {$regex:".*"+search+ ".*", $options: "i"}},
-                {catagories: {$regex:".*"+search+ ".*", $options: "i"}},
-                
+            ]
+        })
+            .limit(limit * 1)
+            .skip((page - 1) * limit)
+            .exec();
+
+        const count = await ProductData.find({
+            $or: [
+                { product_name: { $regex: ".*" + search + ".*", $options: "i" } },
+                { product_discription: { $regex: ".*" + search + ".*", $options: "i" } },
+                { catagories: { $regex: ".*" + search + ".*", $options: "i" } },
+
             ]
         }).countDocuments()
 
-        res.status(200).render("home", { 
+        res.status(200).render("home", {
             users: data,
-            totalpages : Math.ceil(count/limit),
-            currentpage : page
+            totalpages: Math.ceil(count / limit),
+            currentpage: page
         })
     } catch (error) {
         console.log(error.message)
@@ -153,7 +154,7 @@ const editProduct = async (req, res) => {
 }
 const updateProduct = async (req, res) => {
     try {
-        if(req.files){
+        if (req.files) {
             const updateData = await ProductData.findByIdAndUpdate({ _id: req.body.id }, {
                 $set: {
                     product_name: req.body.pname,
@@ -164,7 +165,7 @@ const updateProduct = async (req, res) => {
                 }
             })
             res.redirect("/admin/home")
-        }else{
+        } else {
             const updateData = await ProductData.findByIdAndUpdate({ _id: req.body.id }, {
                 $set: {
                     product_name: req.body.pname,
@@ -190,37 +191,37 @@ const deleteProduct = async (req, res) => {
 const query = async (req, res) => {
     try {
         var search = '';
-        if(req.query.search){
+        if (req.query.search) {
             search = req.query.search;
         }
 
         var page = 1;
-        if(req.query.page){
+        if (req.query.page) {
             page = req.query.page;
         }
         const limit = 4
 
         const userData = await Details.find({
 
-            $or:[
-                {name: {$regex:".*"+search+ ".*", $options: "i"}},
-                {email: {$regex:".*"+search+ ".*", $options: "i"}},
-                {country: {$regex:".*"+search+ ".*", $options: "i"}},
-                
+            $or: [
+                { name: { $regex: ".*" + search + ".*", $options: "i" } },
+                { email: { $regex: ".*" + search + ".*", $options: "i" } },
+                { country: { $regex: ".*" + search + ".*", $options: "i" } },
+
             ]
 
         })
-        .limit(limit * 1)
-         .skip((page - 1) * limit)
-         .exec();
+            .limit(limit * 1)
+            .skip((page - 1) * limit)
+            .exec();
 
-        const count = await Details.find({ 
+        const count = await Details.find({
         }).countDocuments()
 
-        res.status(200).render("query", { 
+        res.status(200).render("query", {
             user: userData,
-            totalpages : Math.ceil(count/limit),
-            currentpage : page
+            totalpages: Math.ceil(count / limit),
+            currentpage: page
         })
     } catch (error) {
         console.log(error.message)
@@ -304,77 +305,77 @@ const exportpdf = async (req, res) => {
         console.log(error.message)
     }
 }
-const uploadbanner = async(req, res)=>{
+const uploadbanner = async (req, res) => {
     try {
         res.render("bannerupload")
     } catch (error) {
         console.log(error.message)
     }
 }
-const banner = async(req, res)=>{
+const banner = async (req, res) => {
     try {
-        let ban = await bannerdata.find({ })
-        if(ban){
-            res.render("banner", { x : ban})
-        }else{
-            res.render("banner", {message : "Banner Not Found"})
+        let ban = await bannerdata.find({})
+        if (ban) {
+            res.render("banner", { x: ban })
+        } else {
+            res.render("banner", { message: "Banner Not Found" })
         }
     } catch (error) {
         console.log(error.message)
     }
 }
 
-const bannerAdd = async(req, res)=>{
+const bannerAdd = async (req, res) => {
     try {
         const image = req.file.filename;
         const baner = new bannerdata({
-            image : image
+            image: image
         });
         const bdata = await baner.save()
-        if(bdata){
+        if (bdata) {
             res.redirect("/admin/banner")
-        }else{
-            res.render("banner", {message: "Banner not Added"})
+        } else {
+            res.render("banner", { message: "Banner not Added" })
         }
     } catch (error) {
         console.log(error.message)
     }
 }
 
-const bannerdelete = async(req, res)=>{
+const bannerdelete = async (req, res) => {
     const id = req.query.id
     console.log(id)
-    const deleteBanner = await bannerdata.deleteOne({_id : id})
+    const deleteBanner = await bannerdata.deleteOne({ _id: id })
     res.redirect("/admin/banner")
 }
 
-const companyinfo = async(req, res)=>{
+const companyinfo = async (req, res) => {
     try {
         res.render("companyPara")
     } catch (error) {
         console.log(error.message)
     }
 }
-const companyupload = async(req, res)=>{
+const companyupload = async (req, res) => {
     try {
         const coInfo = req.body.dicription;
         const image = req.files;
         const com_type = req.body.page;
         console.log(coInfo)
 
-        const datac = new comapnydata ({
-        Company_info : coInfo,
-        image : image,
-        company_page : com_type
-    });
+        const datac = new comapnydata({
+            Company_info: coInfo,
+            image: image,
+            company_page: com_type
+        });
 
-    const cdata = await datac.save();
-    console.log(cdata)
-    if(cdata){
-        res.redirect("/admin/company-info")
-    }else{
-        res.render('companyPara', {message: "Data not save"})
-    }
+        const cdata = await datac.save();
+        console.log(cdata)
+        if (cdata) {
+            res.redirect("/admin/company-info")
+        } else {
+            res.render('companyPara', { message: "Data not save" })
+        }
 
 
     } catch (error) {
@@ -383,46 +384,104 @@ const companyupload = async(req, res)=>{
 
 }
 
-const offer = async(req, res)=>{
+const offer = async (req, res) => {
     try {
-        let off = await offerdata.find({ })
-        if(off){
-            res.render("offer", { x : off})
-        }else{
-            res.render("offer", {message : "Banner Not Found"})
+        let off = await offerdata.find({})
+        if (off) {
+            res.render("offer", { x: off })
+        } else {
+            res.render("offer", { message: "Banner Not Found" })
         }
     } catch (error) {
         console.log(error.message)
     }
 }
-const offerupdate = async(req, res)=>{
+const offerupdate = async (req, res) => {
     try {
         res.render("offerupload")
     } catch (error) {
         console.log(error.message)
     }
 }
-const offeradd = async(req, res)=>{
+const offeradd = async (req, res) => {
     try {
         const image = req.file.filename;
         const offfer = new offerdata({
-            image_1 : image
+            image_1: image
         });
         const offdata = await offfer.save()
-        if(offdata){
+        if (offdata) {
             res.redirect("/admin/offer")
-        }else{
-            res.render("offerupload", {message: "Banner not Added"})
+        } else {
+            res.render("offerupload", { message: "Banner not Added" })
         }
     } catch (error) {
         console.log(error.message)
-    }   
+    }
 }
-const offerdelete = async(req, res)=>{
+const offerdelete = async (req, res) => {
     const id = req.query.id
     console.log(id)
-    const deleteBanner = await offerdata.deleteOne({_id : id})
+    const deleteBanner = await offerdata.deleteOne({ _id: id })
     res.redirect("/admin/offer")
+}
+
+const link = async (req, res) => {
+    try {
+        res.render("link")
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+const linkadd = async (req, res) => {
+    try {
+        const wLink = req.body.whatsapp;
+        const iLink = req.body.instagram;
+        const fLink = req.body.facebook;
+        const yLink = req.body.youtube;
+        const email = req.body.email;
+        const phone = req.body.phone;
+        const Slink = new Alllink({
+            Whatsapp_Link: wLink,
+            Instagram_Link: iLink,
+            Facebook_Link: fLink,
+            Youtube_Link: yLink,
+            Email: email,
+            Number: phone,
+        });
+        const Socal = await Slink.save()
+        if (Socal) {
+            res.redirect("/admin/link")
+        } else {
+            res.render("link", { message: "Link not Added" })
+        }
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+const linkeditpage = (req, res)=>{
+    Alllink.find({}).then((x)=>{
+        res.render("linkeditpage", {x})
+    })
+}
+
+const linkUpdate = async (req, res) => {
+    try {
+        const updatelink = await Alllink.findByIdAndUpdate({ _id: "652a6c7e8585b495c0592be8" }, {
+            $set: {
+                Whatsapp_Link: req.body.whatsapp,
+                Instagram_Link: req.body.instagram,
+                Facebook_Link: req.body.facebook,
+                Youtube_Link: req.body.youtube,
+                Email: req.body.email,
+                Number: req.body.phone,
+            }
+        })
+        res.redirect("/admin/home")
+
+    } catch (error) {
+        console.log(error.message)
+    }
 }
 
 
@@ -432,5 +491,5 @@ const offerdelete = async(req, res)=>{
 module.exports = {
     loadlogin, verifyLogin, loadDashboard, logout, newProduct, addProduct, editProduct, updateProduct, deleteProduct,
     query, exportData, exportpdf, banner, bannerAdd, bannerdelete, uploadbanner, companyinfo, companyupload, offer,
-    offerupdate, offeradd, offerdelete
+    offerupdate, offeradd, offerdelete, link, linkadd, linkUpdate, linkeditpage
 }

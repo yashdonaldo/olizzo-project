@@ -164,7 +164,7 @@
                 <div class="call_about">
                     <h3>Call</h3>
                     <p>For Technical support, you can reach us on Toll No.</p>
-                    <a href='tel:+91 9910221914'>+91 9910221914</a>
+                    <a href='tel:+91 <%= l[0].Number %>'>+91 <%= l[0].Number %></a>
                 </div>
             </div>
             <div class="sm_box">
@@ -172,7 +172,7 @@
                 <div class="call_about">
                     <h3>Email</h3>
                     <p>For Any type of support, query, you can write email us on</p>
-                    <a href="mailto:olizzovib@gmail.com">olizzovib@gmail.com</a>
+                    <a href="mailto:<%= l[0].Email %>"><%= l[0].Email %></a>
                 </div>
             </div>
             <div class="sm_box">
@@ -189,7 +189,7 @@
                 <div class="call_about">
                     <h3>whatsapp</h3>
                     <p>Need Any help, chat with my team</p>
-                    <a href="https://api.whatsapp.com/send?phone=919910221914">Click Here</a>
+                    <a href="<%= l[0].Whatsapp_Link %>">Click Here</a>
                 </div>
             </div>
         </div>
